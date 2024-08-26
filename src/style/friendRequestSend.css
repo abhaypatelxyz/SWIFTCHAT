@@ -1,0 +1,55 @@
+.friend-request-send {
+    border-radius: 15px;
+    display: flex;
+    align-items: center;width: 100%;
+    justify-content: space-between;align-items: center;
+    height: 60px;
+    padding-left: 20px;
+    padding-right: 10px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.friend-request-send.pending {
+    background-color: rgb(37, 37, 41); /* Dark gray for sent */
+    width: 100%;height: 50px;
+}
+
+.friend-request-send.accepted {
+    background-color: rgb(62, 122, 213); /* Green for accepted */
+}
+
+.friend-request-send.rejected {
+    background-color: rgb(220, 53, 69); /* Red for rejected */
+    border: 2px solid rgb(185, 28, 28); /* Darker red border for rejected */
+}
+
+.friend-request-names-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.friend-request-firstname {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.friend-request-username {
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 189, 47); /* Yellow color for username */
+}
+
+.friend-request-button-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 165px;
+}
+
+.status-text {
+    font-weight: bold;padding: 0;margin: 0;
+    color: white; /* Color of the status text */
+}

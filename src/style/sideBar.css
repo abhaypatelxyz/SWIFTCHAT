@@ -1,0 +1,122 @@
+#sideBar {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#sidebar-logo {
+    border-radius: 3px;
+    height: 12vh;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    padding: 19px;
+    background-color: white;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(70, 68, 68);
+    letter-spacing: 0px;
+}
+
+#sidebar-logo-paperplane {
+    font-size: 35px;
+    color: rgb(78, 67, 228);
+}
+
+#sidebar-logo p {
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar-icons {
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    flex-grow: 1; /* Make the sidebar icons take the remaining height */
+    background-color: white;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(70, 68, 68);
+    letter-spacing: 0px;
+    overflow-y: auto; /* Optional: Allows scrolling if content overflows */
+}
+
+.sidebar-icons-divs {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.sidebar-icons-divs div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-icons-divs-icon {
+    font-size: 20px;
+    color: rgb(164, 168, 168);
+}
+
+/* Active state styling */
+.sidebar-icons-divs.active {
+    background-color: rgb(88, 88, 236);
+    color: white;
+}
+
+.sidebar-icons-divs.active .sidebar-icons-divs-icon {
+    color: white;
+}
+
+.sidebar-footer {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    height: auto;
+    align-items: center;
+    padding-left: 20px;
+    height: 10vh;
+}
+
+.profile-picture {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.logout-text {
+    padding: 0;
+    margin: 0;
+}
+
+#profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#profile-name {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(42, 43, 43);
+}
+
+#logout-text {
+    color: rgb(170, 162, 161);
+    font-weight: 600;
+    position: relative;
+    top: -8px;
+}
+#logout-text:hover{
+    scale: 1.1;cursor: pointer;
+}

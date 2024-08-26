@@ -1,8 +1,8 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// src/firebase/firebase.js
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getDatabase, ref, set } from 'firebase/database'; // Import Realtime Database functions
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAdmB9XmcBEULc-MUUgqk157SNr3keTeJ4",
   authDomain: "whatsapp-clone-1751d.firebaseapp.com",
@@ -11,9 +11,11 @@ const firebaseConfig = {
   messagingSenderId: "329720356774",
   appId: "1:329720356774:web:0fceb4534f507cc289b967",
   measurementId: "G-RLWWK7PZXY",
-  databaseURL: 'https://whatsapp-clone-1751d-default-rtdb.firebaseio.com/',
+  databaseURL: 'https://whatsapp-clone-1751d-default-rtdb.firebaseio.com/'
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const database = getDatabase(app); // Initialize Realtime Database
+
+export { app,auth, database };

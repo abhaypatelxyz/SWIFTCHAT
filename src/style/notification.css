@@ -1,0 +1,5 @@
+.notification{
+    padding: 30px;flex-direction: column;
+    display: flex;
+    gap: 10px;
+}

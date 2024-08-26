@@ -1,0 +1,113 @@
+.chat {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#chat-header {
+    height: 12%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px 0 10px;
+    border-radius: 3px;
+    /* background-color: rgb(212, 222, 222); */
+}
+
+#chat-component-name-p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#chat-header-div {
+    display: flex;
+    background-color: white;
+    border-radius: 3px;
+    width: 70%;
+}
+
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    height: 76%;
+    background-color: white;
+    overflow: scroll;
+    border-radius: 3px;
+}
+
+.chat-footer {
+    height: 12%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    border-radius: 4px;
+}
+
+#chat-header-icons {
+    display: flex;
+    gap: 15px;
+}
+
+#chat-component-name-typing {
+    color: rgb(77, 195, 77);
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;flex-direction: column;
+    position: relative;
+    top: -6px;
+}
+
+#chat-footer-div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(221, 230, 237); */
+    padding: 0 20px 0px 20px;
+    height: 75%;
+    border-radius: 20px;
+    gap: 10px;
+}
+
+#chat-footer-div input {
+    border-style: none;
+    width: 80%;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    background: none;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+}
+
+/* Optional: To remove browser-specific input field styles like inner padding */
+#chat-footer-div input::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 1; /* Set this if you want to control the placeholder's opacity */
+}
+
+#chat-footer-div input::-moz-placeholder {
+    color: inherit;
+    opacity: 1;
+}
+
+#chat-footer-div input:-ms-input-placeholder {
+    color: inherit;
+    opacity: 1;
+}
+
+#chat-footer-div input::-ms-input-placeholder {
+    color: inherit;
+    opacity: 1;
+}
+
+#chat-footer-div input::placeholder {
+    color: inherit;
+    opacity: 1;
+}
