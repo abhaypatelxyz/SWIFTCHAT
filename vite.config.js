@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/socket.io': {
-        target: 'https://chat-box-server-nine.vercel.app',
+        target: 'https://chat-box-server-4k6v.vercel.app',
         changeOrigin: true,
         secure: false,
         ws: true, // Enable WebSocket proxying if using WebSockets

@@ -8,7 +8,7 @@ const Home = lazy(() => import('./component/home.jsx'));
 const Login = lazy(() => import('./component/login.jsx'));
 const Signup = lazy(() => import('./component/signup.jsx'));
 
-const socket = io('https://chat-box-server-nine.vercel.app', {
+const socket = io('https://chat-box-server-4k6v.vercel.app', {
   transports: ['websocket'], // Ensure WebSocket transport is used
   withCredentials: true // If credentials are required
 });
