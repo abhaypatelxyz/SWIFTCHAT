@@ -9,8 +9,20 @@ const Login = lazy(() => import('./component/login.jsx'));
 const Signup = lazy(() => import('./component/signup.jsx'));
 
 const socket = io('https://chat-box-server-nine.vercel.app', {
-  transports: ['websocket'],
-  withCredentials: true,
+  transports: ['websocket'], // Ensure WebSocket transport is used
+  withCredentials: true // If credentials are required
+});
+
+socket.on('connect', () => {
+  console.log('Connected to WebSocket server');
+});
+
+socket.on('disconnect', () => {
+  console.log('Disconnected from WebSocket server');
+});
+
+socket.on('receive-message', (message) => {
+  console.log('Message received:', message);
 });
 
 const App = () => {
