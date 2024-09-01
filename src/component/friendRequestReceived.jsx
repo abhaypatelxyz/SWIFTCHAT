@@ -7,7 +7,7 @@ function FriendRequestReceived({ friendRequest, user }) {
 
     const handleAccept = async () => {
         try {
-            await axios.post(`http://localhost:3000/api/acceptfriendrequest?sender=${friendRequest._id}&receiver=${user._id}`);
+            await axios.post(`https://chat-box-server-nine.vercel.app/api/acceptfriendrequest?sender=${friendRequest._id}&receiver=${user._id}`);
             setStatus('accepted');
             console.log('Friend request accepted');
         } catch (error) {
@@ -17,7 +17,7 @@ function FriendRequestReceived({ friendRequest, user }) {
 
     const handleReject = async () => {
         try {
-            await axios.post(`http://localhost:3000/api/rejectfriendrequest?sender=${friendRequest._id}&receiver=${user._id}`);
+            await axios.post(`https://chat-box-server-nine.vercel.app/api/rejectfriendrequest?sender=${friendRequest._id}&receiver=${user._id}`);
             setStatus('rejected');
             console.log('Friend request rejected');
         } catch (error) {

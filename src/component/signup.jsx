@@ -24,7 +24,7 @@ function SignUp_page({setUser,socket}) {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             console.log("User signed up and data saved",userCredential);
-            const userData=await axios.post('http://localhost:3000/api/register',{
+            const userData=await axios.post('https://chat-box-server-nine.vercel.app/api/register',{
                 email,
                 firstName,
                 lastName,

@@ -9,7 +9,7 @@ import { app as firebaseApp } from '../firebase/firebase.js';
 
 const auth = getAuth(firebaseApp);
 
-const API_URL = process.env.REACT_APP_API_URL; // Access environment variable
+const API_URL = "https://chat-box-server-nine.vercel.app/api"; // Access environment variable
 
 const Login = ({ setUser, socket }) => {
     const navigate = useNavigate();
@@ -82,7 +82,7 @@ const Login = ({ setUser, socket }) => {
             const user = result.user;
 
             const userData = await axios.get(`${API_URL}/userdata?uid=${user.uid}&socket.id=${socket.id}`);
-            
+           
             setUser(userData.data);
             localStorage.setItem('user', JSON.stringify(userData.data));
             console.log('User logged in with Google:', userData.data);

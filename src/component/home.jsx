@@ -16,7 +16,7 @@ const Home = ({ user, setUser, socket, contact, setContact }) => {
 
         const updateSocketId = async () => {
             try {
-                await axios.put(`http://localhost:3000/api/updatedata?uid=${user.uid}&socketId=${socket.id}`);
+                await axios.put(`https://chat-box-server-nine.vercel.app/api/updatedata?uid=${user.uid}&socketId=${socket.id}`);
                 console.log('Socket ID updated successfully', socket.id);
             } catch (error) {
                 console.error('Error updating socket ID:', error);
@@ -31,7 +31,7 @@ const Home = ({ user, setUser, socket, contact, setContact }) => {
 
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/userdata?uid=${user.uid}&socketId=${socket.id}`);
+                const response = await axios.get(`https://chat-box-server-nine.vercel.app/api/userdata?uid=${user.uid}&socketId=${socket.id}`);
                 setUser(response.data);
             } catch (error) {
                 console.error("Error fetching user data:", error);

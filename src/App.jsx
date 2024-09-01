@@ -8,7 +8,7 @@ const Home = lazy(() => import('./component/home.jsx'));
 const Login = lazy(() => import('./component/login.jsx'));
 const Signup = lazy(() => import('./component/signup.jsx'));
 
-const socket = io('http://localhost:3000');
+const socket = io('https://chat-box-server-nine.vercel.app');
 
 const App = () => {
   const navigate = useNavigate();
