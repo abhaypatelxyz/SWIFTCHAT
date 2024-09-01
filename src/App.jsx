@@ -40,7 +40,7 @@ const App = () => {
         ) : (
           <>
             <Route path='/login' element={<Login setUser={setUser} socket={socket} />} />
-            <Route path='/signup' element={<Signup setUser={setUser} socket={socket} />} />
+            {/* <Route path='/signup' element={<Signup setUser={setUser} socket={socket} />} /> */}
           </>
         )}
         <Route path='*' element={<Navigate to={user != null ? '/' : '/login'} />} />
