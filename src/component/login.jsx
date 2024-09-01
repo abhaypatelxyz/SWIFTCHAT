@@ -81,8 +81,8 @@ const Login = ({ setUser, socket }) => {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
 
-            const userData = await axios.get(`${API_URL}/userdata?uid=${user.uid}&socket.id=${socket.id}`);
-           
+            const userData = await axios.get(`${API_URL}/userdata?uid=${user.uid}`);
+           console.log("ji",userData);
             setUser(userData.data);
             localStorage.setItem('user', JSON.stringify(userData.data));
             console.log('User logged in with Google:', userData.data);
