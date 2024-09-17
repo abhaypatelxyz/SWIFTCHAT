@@ -6,8 +6,9 @@ function FriendRequestReceived({ friendRequest, user }) {
     const [status, setStatus] = useState(friendRequest.status || 'pending');
 
     const handleAccept = async () => {
+        console.log("hellow");
         try {
-            await axios.post(`https://chat-box-server-nine.vercel.app/api/acceptfriendrequest?sender=${friendRequest._id}&receiver=${user._id}`);
+            await axios.post(`https://chat-box-server-4k6v.vercel.app/api/acceptfriendrequest?sender=${friendRequest._id}&receiver=${user._id}`);
             setStatus('accepted');
             console.log('Friend request accepted');
         } catch (error) {
@@ -17,7 +18,7 @@ function FriendRequestReceived({ friendRequest, user }) {
 
     const handleReject = async () => {
         try {
-            await axios.post(`https://chat-box-server-nine.vercel.app/api/rejectfriendrequest?sender=${friendRequest._id}&receiver=${user._id}`);
+            await axios.post(`https://chat-box-server-4k6v.vercel.app/api/rejectfriendrequest?sender=${friendRequest._id}&receiver=${user._id}`);
             setStatus('rejected');
             console.log('Friend request rejected');
         } catch (error) {

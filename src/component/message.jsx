@@ -20,7 +20,7 @@ const Message = ({ user, whom, setWhom, contact, setContact }) => {
             if (user.contact && user.contact.length > 0) {
                 try {
                     const contactPromises = user.contact.map(async (_id) => {
-                        const response = await axios.get(`https://chat-box-server-nine.vercel.app/api/contactdata?_id=${_id}`);
+                        const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/contactdata?_id=${_id}`);
                         return response.data;
                     });
                     const contacts = await Promise.all(contactPromises);
@@ -60,7 +60,7 @@ const Message = ({ user, whom, setWhom, contact, setContact }) => {
     const handleSearch = async () => {
         if (searchQuery.trim() === "") return; // Avoid search with empty query
         try {
-            const response = await axios.get(`https://chat-box-server-nine.vercel.app/api/username?userName=${searchQuery}`);
+            const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/username?userName=${searchQuery}`);
             setSearchResults(response.data);
         } catch (error) {
             console.error("Error in searching users", error);
@@ -75,7 +75,7 @@ const Message = ({ user, whom, setWhom, contact, setContact }) => {
 
     const handleSendFriendRequest = async (result) => {
         try {
-            await axios.post(`https://chat-box-server-nine.vercel.app/api/sendfriendrequest?sender=${user._id}&receiver=${result._id}`);
+            await axios.post(`https://chat-box-server-4k6v.vercel.app/api/sendfriendrequest?sender=${user._id}&receiver=${result._id}`);
             console.log('Friend request sent to:', result);
         } catch (err) {
             console.error("Error sending friend request", err);

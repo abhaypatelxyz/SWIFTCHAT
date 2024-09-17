@@ -14,7 +14,7 @@ function Notification({ user }) {
                 const requests = [];
                 await Promise.all(
                     user.friendRequestSend.map(async (request) => {
-                        const response = await axios.get(`https://chat-box-server-nine.vercel.app/api/contactdata?_id=${request.receiver}`);
+                        const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/contactdata?_id=${request.receiver}`);
                         // Include status from request object
                         requests.push({
                             ...response.data,
@@ -40,7 +40,7 @@ function Notification({ user }) {
                 const requests = [];
                 await Promise.all(
                     user.friendRequestReceived.map(async (request) => {
-                        const response = await axios.get(`https://chat-box-server-nine.vercel.app/api/contactdata?_id=${request.sender}`);
+                        const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/contactdata?_id=${request.sender}`);
                         requests.push({...response.data,
                             status: request.status }); // Store the result in the array
                     })

@@ -9,12 +9,12 @@ function messageComponent({name,onClick}) {
             <div id='message-component-name'>
                 <p id='message-component-name-p'>{name.toUpperCase()}
                     
-                <p id='message-component-name-typing'>Typing...</p>
+                {/* <p id='message-component-name-typing'>Typing...</p> */}
                 </p>
             </div>
             <div id='message-component-time'>
-                <p>05:11 PM</p>
-                <div id='message-component-time-div'>2</div>
+                {/* <p>05:11 PM</p> */}
+                {/* <div id='message-component-time-div'>2</div> */}
             </div>
         </div>
     )

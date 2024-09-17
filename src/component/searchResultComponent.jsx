@@ -6,7 +6,15 @@ function SearchResultComponent({ result, handleSendFriendRequest }) {
         <div className="search-result-item">
             <p>{result.userName}</p>
             <p>{result.firstName +" "+result.lastName}</p>
-            <button onClick={() => handleSendFriendRequest(result)}>Add</button>
+            <button 
+    onClick={() => {
+        handleSendFriendRequest(result);
+        alert("Request Sent Successfully");
+    }}
+>
+    Add
+</button>
+
         </div>
     );
 }

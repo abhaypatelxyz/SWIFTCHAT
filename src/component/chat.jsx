@@ -28,7 +28,7 @@ function Chat({ user, socket, whom, setWhom }) {
 
       const fetchMessage = async () => {
         try {
-          const response = await axios.get(`https://chat-box-server-nine.vercel.app/api/get?user1=${user._id}&user2=${whom._id}`);
+          const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/get?user1=${user._id}&user2=${whom._id}`);
           const fetchedMessages = response.data.chat.chat.map((chat) => ({
             side: chat.sender === user._id ? 'right' : 'left',
             text: chat.content,
@@ -71,7 +71,7 @@ function Chat({ user, socket, whom, setWhom }) {
     if (message.trim() !== '' && whom) {
       const newMessage = { side: 'right', text: message, sender: user._id, receiver: whom._id };
       try {
-        await axios.post(`https://chat-box-server-nine.vercel.app/api/send?user1=${user._id}&user2=${whom._id}&content=${message}&sender=${user._id}`);
+        await axios.post(`https://chat-box-server-4k6v.vercel.app/api/send?user1=${user._id}&user2=${whom._id}&content=${message}&sender=${user._id}`);
         setMessages((prevMessages) => {
           const updatedMessages = [...prevMessages, newMessage];
           localStorage.setItem(`messages_${whom._id}`, JSON.stringify(updatedMessages));

@@ -9,7 +9,7 @@ import { app as firebaseApp } from '../firebase/firebase.js';
 
 const auth = getAuth(firebaseApp);
 
-const API_URL = "https://chat-box-server-nine.vercel.app/api"; // Access environment variable
+const API_URL = "https://chat-box-server-4k6v.vercel.app/api"; // Access environment variable
 
 const Login = ({ setUser, socket }) => {
     const navigate = useNavigate();
