@@ -16,24 +16,23 @@ const SideBar = ({ user, setUser, contact, activeItem, setActiveItem }) => {
 
   const logOut = async () => {
     try {
-      // Update user status on the server
-      if (user) {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (storedUser) {
+        console.log(storedUser.uid);
         await axios.post(`${BASE_URL}/api/updateOnline?uid=${user.uid}`);
         console.log("User status updated on logout");
       }
 
+      // Clear messages from localStorage
+      // contact.forEach((who) => {
+      //   localStorage.removeItem(`messages_${who._id}`);
+      // });
+
       // Clear user data and redirect to login
       localStorage.removeItem('user');
       setUser(null);
-
-      // Redirect to login page
       navigate('/login');
-
-      // Optional: Clear messages from localStorage
-      contact.forEach((who) => {
-        localStorage.removeItem(`messages_${who._id}`);
-      });
-
     } catch (error) {
       console.error('Error during logout:', error);
     }
@@ -85,7 +84,7 @@ const SideBar = ({ user, setUser, contact, activeItem, setActiveItem }) => {
       <div className='sidebar-footer'>
         <img className='profile-picture' src={avatar} alt="Profile" />
         <div id='profile-info'>
-          <span id='profile-name'>{user ? user.firstName : "Guest"}</span>
+          <span id='profile-name'>{user.firstName}</span>
           <p id='logout-text' onClick={logOut}>Log out</p>
         </div>
       </div>
@@ -94,4 +93,3 @@ const SideBar = ({ user, setUser, contact, activeItem, setActiveItem }) => {
 };
 
 export default SideBar;
-
