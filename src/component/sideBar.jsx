@@ -27,7 +27,7 @@ const SideBar = ({ user, setUser, contact, activeItem, setActiveItem }) => {
       setUser(null);
 
       // Redirect to login page
-      navigate('/');
+      navigate('/login');
 
       // Optional: Clear messages from localStorage
       contact.forEach((who) => {
