@@ -32,7 +32,7 @@ const SideBar = ({ user, setUser, contact, activeItem, setActiveItem }) => {
       // Clear user data and redirect to login
       localStorage.removeItem('user');
       setUser(null);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Error during logout:', error);
     }
