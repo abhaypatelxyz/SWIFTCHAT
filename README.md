@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -10,3 +11,6 @@ Currently, two official plugins are available:
 =======
 # WHATSAPP-CLONE
 >>>>>>> f501821526cc267c6616402d822edf49ceae5d7d
+=======
+# SWIFTCHAT
+>>>>>>> 7c7421060ecbefeaf3223d59526a6ccc48e7c6dc
