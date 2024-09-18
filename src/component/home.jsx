@@ -7,17 +7,20 @@ import Message from './message';
 import Chat from './chat.jsx';
 import Notification from './notification.jsx';
 
-const Home = ({ user, setUser, socket, contact, setContact }) => {
+import { BASE_URL } from '../../public/constant.js';
+import { useSocket } from '../socketProvider.jsx'; 
+
+const Home = ({ user, setUser, contact, setContact }) => {
     const [whom, setWhom] = useState(null);
     const [activeItem, setActiveItem] = useState("Messages");
+    const socket = useSocket(); 
 
     useEffect(() => {
         if (!user || !socket) return;
 
         const updateSocketId = async () => {
             try {
-                await axios.put(`https://chat-box-server-4k6v.vercel.app/api/updatedata?uid=${user.uid}&socketId=${socket.id}`);
-                console.log('Socket ID updated successfully', socket.id);
+                await axios.post(`${BASE_URL}/api/updatedata?uid=${user.uid}&socketId=${socket.id}`);
             } catch (error) {
                 console.error('Error updating socket ID:', error);
             }
@@ -31,7 +34,7 @@ const Home = ({ user, setUser, socket, contact, setContact }) => {
 
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/userdata?uid=${user.uid}&socketId=${socket.id}`);
+                const response = await axios.get(`${BASE_URL}/api/userdata?uid=${user.uid}&socketId=${socket.id}`);
                 setUser(response.data);
             } catch (error) {
                 console.error("Error fetching user data:", error);
@@ -78,13 +81,18 @@ const Home = ({ user, setUser, socket, contact, setContact }) => {
 
                 {activeItem === "Notification" && (
                     <div id="notification">
-                    <Notification user={user}/>
+                        <Notification user={user} />
                     </div>
                 )}
+
+                {/* {activeItem === "Call" && (
+                    <div id="call">
+                        <Call user={user} socket={socket} whom={whom} />
+                    </div>
+                )} */}
             </div>
         </div>
     );
 };
 
 export default Home;
-

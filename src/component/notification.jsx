@@ -4,6 +4,7 @@ import FriendRequestReceived from './friendRequestReceived.jsx';
 import FriendRequestSend from './friendRequestSend.jsx';
 import '../style/notification.css';
 
+import { BASE_URL } from '../../public/constant.js';
 function Notification({ user }) {
     const [friendRequest, setFriendRequest] = useState([]);
     const [sendFriendRequest, setSendFriendRequest] = useState([]);
@@ -14,7 +15,7 @@ function Notification({ user }) {
                 const requests = [];
                 await Promise.all(
                     user.friendRequestSend.map(async (request) => {
-                        const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/contactdata?_id=${request.receiver}`);
+                        const response = await axios.get(`  ${BASE_URL}/api/contactdata?_id=${request.receiver}`);
                         // Include status from request object
                         requests.push({
                             ...response.data,
@@ -40,7 +41,7 @@ function Notification({ user }) {
                 const requests = [];
                 await Promise.all(
                     user.friendRequestReceived.map(async (request) => {
-                        const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/contactdata?_id=${request.sender}`);
+                        const response = await axios.get(`${BASE_URL}/api/contactdata?_id=${request.sender}`);
                         requests.push({...response.data,
                             status: request.status }); // Store the result in the array
                     })

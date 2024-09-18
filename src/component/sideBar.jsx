@@ -1,31 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../style/sideBar.css';
 
-import { FaPaperPlane } from "react-icons/fa6";
+import { FaPaperPlane } from "react-icons/fa";
 import { TbLayoutDashboard } from "react-icons/tb";
-import { IoCallOutline } from "react-icons/io5";
+import { IoCallOutline, IoSettingsOutline, IoNotificationsOutline } from "react-icons/io5";
 import { TbMessageDots } from "react-icons/tb";
-import { IoSettingsOutline } from "react-icons/io5";
-import { IoMdNotificationsOutline } from "react-icons/io";
 
+import { BASE_URL } from '../../public/constant.js';
 import avatar from '../assets/google.png';
-const SideBar = ({user,setUser,contact,activeItem, setActiveItem}) => {
-  const navigate=useNavigate();
 
-  const logOut=()=>{
-    contact.map((who)=>{
-      localStorage.removeItem(`messages_${who._id}`);
-    })
-    localStorage.removeItem('user');
-    setUser(null);
-    return;
-  }
+const SideBar = ({ user, setUser, contact, activeItem, setActiveItem }) => {
+  const navigate = useNavigate();
+
+  const logOut = async () => {
+    try {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (storedUser) {
+        console.log(storedUser.uid);
+        await axios.post(`${BASE_URL}/api/updateOnline?uid=${user.uid}`);
+        console.log("User status updated on logout");
+      }
+
+      // Clear messages from localStorage
+      // contact.forEach((who) => {
+      //   localStorage.removeItem(`messages_${who._id}`);
+      // });
+
+      // Clear user data and redirect to login
+      localStorage.removeItem('user');
+      setUser(null);
+      navigate('/login');
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  };
+
   return (
     <div id='sideBar'>
       <div id='sidebar-logo'>
         <FaPaperPlane id='sidebar-logo-paperplane' />
-        <p>ChatBox</p>
+        <p>SwiftChat</p>
       </div>
       <div id='sidebar-icons'>
         <div
@@ -49,12 +66,11 @@ const SideBar = ({user,setUser,contact,activeItem, setActiveItem}) => {
           <TbMessageDots className='sidebar-icons-divs-icon' />
           Messages
         </div>
-
         <div
           className={`sidebar-icons-divs ${activeItem === "Notification" ? "active" : ""}`}
           onClick={() => setActiveItem("Notification")}
         >
-          <IoMdNotificationsOutline className='sidebar-icons-divs-icon' />
+          <IoNotificationsOutline className='sidebar-icons-divs-icon' />
           Notification
         </div>
         <div
@@ -64,19 +80,16 @@ const SideBar = ({user,setUser,contact,activeItem, setActiveItem}) => {
           <IoSettingsOutline className='sidebar-icons-divs-icon' />
           Settings
         </div>
-
-
-
       </div>
       <div className='sidebar-footer'>
-        <img className='profile-picture' src={avatar}></img>
+        <img className='profile-picture' src={avatar} alt="Profile" />
         <div id='profile-info'>
           <span id='profile-name'>{user.firstName}</span>
-          <p id='logout-text' onClick={()=>logOut()}>Log out</p>
+          <p id='logout-text' onClick={logOut}>Log out</p>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default SideBar;

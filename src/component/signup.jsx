@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth} from '../firebase/firebase.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import axios from 'axios';
+
+import { BASE_URL } from '../../public/constant.js';
 function SignUp_page({setUser,socket}) {
     const navigate = useNavigate();
     
@@ -24,7 +26,7 @@ function SignUp_page({setUser,socket}) {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             console.log("User signed up and data saved",userCredential);
-            const userData=await axios.post('https://chat-box-server-4k6v.vercel.app/api/register',{
+            const userData=await axios.post(`${BASE_URL}/api/register`,{
                 email,
                 firstName,
                 lastName,

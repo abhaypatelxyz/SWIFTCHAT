@@ -2,7 +2,7 @@ import React from 'react'
 import '../style/messageComponent.css'
 
 import google from '../assets/google.png'
-function messageComponent({name,onClick}) {
+function messageComponent({name,onClick,online}) {
     return (
         <div id='message-compontnt-parent' onClick={onClick}>
             <img src={google} id='message-component-image'></img>
@@ -16,6 +16,7 @@ function messageComponent({name,onClick}) {
                 {/* <p>05:11 PM</p> */}
                 {/* <div id='message-component-time-div'>2</div> */}
             </div>
+            {online && <span className="online-status">Online</span>}
         </div>
     )
 }

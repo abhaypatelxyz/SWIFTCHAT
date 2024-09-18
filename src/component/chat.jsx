@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import '../style/chat.css';
-
+import { useWebRTC } from '../webRTCprovider.jsx'; // Import WebRTC context
+import axios from 'axios';
+import { BASE_URL } from '../../public/constant';
+import TextChats from './textChats';
+import google from '../assets/google.png';
 import { HiMiniMicrophone } from "react-icons/hi2";
 import { BsSend } from "react-icons/bs";
 import { MdOutlineAddLocationAlt } from "react-icons/md";
 import { TbPhotoSearch } from "react-icons/tb";
 import { BsEmojiSmile } from "react-icons/bs";
-import axios from 'axios';
-import TextChats from './textChats';
-import google from '../assets/google.png';
+import { CiVideoOn } from "react-icons/ci";
+
+import '../style/chat.css';
+
 
 function Chat({ user, socket, whom, setWhom }) {
+  const { startCall, endCall } = useWebRTC(); // Use WebRTC context
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -28,7 +33,7 @@ function Chat({ user, socket, whom, setWhom }) {
 
       const fetchMessage = async () => {
         try {
-          const response = await axios.get(`https://chat-box-server-4k6v.vercel.app/api/get?user1=${user._id}&user2=${whom._id}`);
+          const response = await axios.get(`${BASE_URL}/api/get?user1=${user._id}&user2=${whom._id}`);
           const fetchedMessages = response.data.chat.chat.map((chat) => ({
             side: chat.sender === user._id ? 'right' : 'left',
             text: chat.content,
@@ -43,7 +48,11 @@ function Chat({ user, socket, whom, setWhom }) {
         }
       };
 
+      // Fetch messages initially and then every second
       fetchMessage();
+      const intervalId = setInterval(fetchMessage, 1000); // Fetch every second
+
+      return () => clearInterval(intervalId); // Clear interval on unmount
     }
   }, [whom, user]);
 
@@ -71,7 +80,7 @@ function Chat({ user, socket, whom, setWhom }) {
     if (message.trim() !== '' && whom) {
       const newMessage = { side: 'right', text: message, sender: user._id, receiver: whom._id };
       try {
-        await axios.post(`https://chat-box-server-4k6v.vercel.app/api/send?user1=${user._id}&user2=${whom._id}&content=${message}&sender=${user._id}`);
+        await axios.post(`${BASE_URL}/api/send?user1=${user._id}&user2=${whom._id}&content=${message}&sender=${user._id}`);
         setMessages((prevMessages) => {
           const updatedMessages = [...prevMessages, newMessage];
           localStorage.setItem(`messages_${whom._id}`, JSON.stringify(updatedMessages));
@@ -95,6 +104,12 @@ function Chat({ user, socket, whom, setWhom }) {
     }
   };
 
+  const initiateCall = () => {
+    if (whom) {
+      startCall(whom.socketId);
+    }
+  };
+
   return (
     <>
       {whom ? (
@@ -108,7 +123,7 @@ function Chat({ user, socket, whom, setWhom }) {
               </div>
             </div>
             <div id='chat-header-icons'>
-              {/* Add chat header icons here */}
+              <CiVideoOn size={40} style={{color:'blue'}} onClick={initiateCall}/>
             </div>
           </div>
 
@@ -125,7 +140,7 @@ function Chat({ user, socket, whom, setWhom }) {
                 value={message}
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
-                placeholder='Type your message...'
+                placeholder='Type a message...'
               />
               <BsSend onClick={handleMessageSend} />
               <MdOutlineAddLocationAlt />
@@ -135,7 +150,9 @@ function Chat({ user, socket, whom, setWhom }) {
           </div>
         </div>
       ) : (
-        <p>Select a contact to start chatting</p>
+        <div className='chat'>
+          <p>Select a contact to start a chat</p>
+        </div>
       )}
     </>
   );
