@@ -1,16 +1,110 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# React + Vite
+1. Introduction:
+Name: -Abhay Patel
+IIT Dhanbad
+Computer Science and Engineering (2026)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The messaging service prototype is designed to facilitate real-time communication between users through text messages. It includes user registration, authentication, one-on-one messaging, group chat functionality, and real-time message updates.
+2. System Overview:
 
-Currently, two official plugins are available:
+The system comprises a frontend and a backend, allowing users to register, authenticate, and send/receive messages. Real-time updates are facilitated via WebSockets.
+3. System Architecture:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# WHATSAPP-CLONE
->>>>>>> f501821526cc267c6616402d822edf49ceae5d7d
-=======
-# SWIFTCHAT
->>>>>>> 7c7421060ecbefeaf3223d59526a6ccc48e7c6dc
+Frontend: React.js, HTML, CSS
+Backend: Node.js, Express.js
+Database: MongoDB (NoSQL)
+WebSockets: Socket.io
+
+4. Data Flow Diagram:
+
+User Registration & Authentication:
+
+Users interact with the React frontend.
+Authentication requests are sent to the Node.js backend.
+User data is stored in MongoDB.
+Messaging & Group Chat:
+
+Users exchange messages through the React frontend.
+Real-time updates are managed via WebSocket connections.
+Messages are stored in MongoDB.
+
+
+Install dependencies
+
+  npm install
+  cd frontend/
+  npm install
+Start the server
+
+  npm run start
+Start the Client
+
+  //open now terminal
+  cd frontend
+  npm start
+5. Technology Stack:
+
+Frontend:
+
+React.js: A popular JavaScript library for building user interfaces.
+Chakra UI: A component library for designing accessible and customizable UIs.
+Backend:
+
+Node.js: A runtime for executing JavaScript on the server.
+Express.js: A web application framework for Node.js.
+Database:
+
+MongoDB (NoSQL): Chosen for its flexibility, scalability, and JSON-like document storage.
+WebSockets:
+
+Socket.io: A library for enabling real-time, bidirectional communication.
+6. System Components:
+
+Frontend:
+
+React.js: Responsible for the user interface, user registration, and message interaction.
+Chakra UI: Provides the design system, components, and UI elements.
+Backend:
+
+Node.js: Manages the server and APIs for user authentication and message handling.
+Express.js: Facilitates route handling and middleware integration.
+MongoDB: Stores user data and messages in a NoSQL database.
+Socket.io: Enables real-time communication and message updates.
+7. Security and Privacy:
+
+Authentication:
+
+User registration is secured via bcrypt hashing and token-based authentication (JWT).
+Passwords are never stored in plain text.
+Privacy:
+
+User data is protected, and privacy is maintained through authentication and authorization controls.
+8. Scalability and Performance:
+
+The system can be horizontally scaled by adding more backend servers and utilizing MongoDB's sharding capabilities.
+Real-time messaging is optimized for performance through WebSockets.
+9. Dependencies and Libraries:
+
+Explain the purpose of key dependencies and libraries, e.g.:
+express: Used to build the RESTful API.
+mongoose: ODM library for MongoDB interaction.
+socket.io: Facilitates real-time messaging.
+10. Deployment and Infrastructure:
+
+Deployment is done on github
+Infrastructure needs include virtual machines, databases, and WebSocket support.
+11. System Testing:
+
+Testing encompasses unit tests for backend components, integration tests for API endpoints, and user acceptance tests for the frontend.
+12. Prototyping Setup and Usage Documentation:
+
+Detailed instructions for setting up the prototype, including:
+Prerequisites
+Installation
+Configuration
+Database setup
+Running the prototype
+Usage guide
+Troubleshooting
+13. Conclusion:
+
+The messaging service prototype provides a clean and intuitive interface for real-time communication, using a robust technology stack and best practices. The system design ensures scalability, security, and optimal performance. Detailed documentation allows for easy setup and usage.
